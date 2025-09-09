@@ -55,9 +55,9 @@ def bubble_sort(arr, size):
         size -= 1
     return arr
 
-def partition(arr, left, right):
+def quick(arr, left, right):
     pivot = arr[(left+right)//2]
-    low = left + 1
+    low = left
     high = right
 
     while(low <= high):
@@ -66,7 +66,7 @@ def partition(arr, left, right):
         while(high > left and arr[high] > pivot):
             high -= 1
 
-        if low < high:
+        if low <= high:
             temp = arr[low]
             arr[low] = arr[high]
             arr[high] = temp
@@ -75,10 +75,10 @@ def partition(arr, left, right):
 
 def quick_sort(arr, left, right):
     if(left < right):
-        mid = partition(arr, left, right)
+        pivot = quick(arr, left, right)
 
-        quick_sort(arr, left, mid-1)
-        quick_sort(arr, mid +1, right)
+        quick_sort(arr, left, pivot-1)
+        quick_sort(arr, pivot +1, right)
 
 
 N = int(input())
