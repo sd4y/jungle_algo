@@ -7,7 +7,7 @@ def solution(friends, gifts):
 
     x, y = 0, 0
     for i in range(len(gifts)) :
-        for j in range(size)
+        for j in range(size):
             temp = list(gifts[i].split())
             if temp[0] == friends[j]:
                 x = j
