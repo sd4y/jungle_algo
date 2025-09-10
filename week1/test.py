@@ -273,10 +273,11 @@ def partition(arr, left, right):
     L = left
     R = right
 
-    while L <= R:
+    while L < R:
         while L <= R and arr[L] < pivot:
             L += 1
-        while L >= R and arr[R] > pivot:
+
+        while L <= R and arr[R] > pivot:
             R -= 1
 
         if L < R:
@@ -284,7 +285,7 @@ def partition(arr, left, right):
             arr[L] = arr[R]
             arr[R] = temp
             L += 1
-            R += 1
+            R -= 1
 
     return R
 
