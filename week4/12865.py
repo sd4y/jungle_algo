@@ -12,6 +12,7 @@
 # dp.sort()
 # print(dp[-1])
 
+#--------------------------------------------
     
 # import sys
 # sys.setrecursionlimit(10**5)
@@ -44,3 +45,26 @@
 
 # result = knapsack_recursive(0, K)
 # print(result)
+
+#--------------------------------------------------------
+
+import sys
+
+input = sys.stdin.readline
+
+N, K = map(int, input().split())
+items = []
+for _ in range(N):
+    items.append(tuple(map(int, input().split())))
+
+prev_dp = [0] * (K + 1)
+current_dp = [0] * (K + 1)
+
+for weight, value in items:
+    for w in range(1, K + 1):
+        if weight > w:
+            current_dp[w] = prev_dp[w]
+        else:
+            current_dp[w] = max(prev_dp[w], value + prev_dp[w - weight])
+    prev_dp = current_dp[:]
+print(prev_dp[K])
